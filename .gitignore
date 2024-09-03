@@ -1,0 +1,9 @@
+test*
+*_sandbox*
+.ipynb_checkpoints
+*.swp
+*.RData
+*.sif
+*.sif
+*.ipynb
+build*

@@ -1,0 +1,48 @@
+Bootstrap: docker
+From: ubuntu:20.04
+
+%post
+  export DEBIAN_FRONTEND=noninteractive
+
+  export PYTHONNOUSERSITE="true"
+  sed -i 's/main/main restricted universe/g' /etc/apt/sources.list
+  apt-get update
+  apt install -y gnupg2
+  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9
+  apt-get update
+  
+  # Install R, Python, and misc. utilities
+  apt-get install -y libopenblas-dev libcurl4-openssl-dev libopenmpi-dev openmpi-bin openmpi-common openmpi-doc openssh-client openssh-server
+
+  apt install -y wget build-essential git vim software-properties-common
+
+  apt install -y curl libhdf5-dev
+  apt install -y libssl-dev libxml2-dev python3-pip
+
+  apt install -y nodejs cmake
+
+  # Install Jupyter and necessary tools for exporting notebooks
+  pip3 install --upgrade pip
+  pip3 install --upgrade jupyter jupyterlab ipython-autotime ipywidgets nbconvert
+
+  add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+  wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
+
+  apt update
+
+  #apt install -y r-base-core r-cran-irkernel r-cran-irdisplay r-cran-seurat python3-ipykernel
+
+  pip3 install changeo
+
+  apt clean
+
+  mkdir /workspace
+  echo "jupyter lab --port 9734 --ip=0.0.0.0 --allow-root --no-browser" > /workspace/launch_jupyter.sh
+  chmod +x /workspace/launch_jupyter.sh
+
+%runscript
+  /workspace/launch_jupyter.sh
+
+%environment
+  export PYTHONNOUSERSITE="true"
+  export MYVAR="Hello"
