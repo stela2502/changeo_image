@@ -64,35 +64,17 @@ To run the Singularity image and start Jupyter Notebook, use:
 ### Example Usage
 
 1. **Build the Image:**
-
-```sh
-make build
-```
-
-   **Explanation:**
-   - Builds the `changeo_image.sif` from the Singularity recipe.
-
 2. **Create and Modify Sandbox (if needed):**
-
-```sh
-make sandbox
-./shell.sh
-```
-
-   **Explanation:**
-   - `make sandbox` creates the sandbox.
-   - `./shell.sh` opens a shell for modifications within the sandbox.
-
 3. **Run the Jupyter Notebook:**
 
-```sh
-./run.sh
-```
 
-   **Explanation:**
-   - Starts the Singularity container and Jupyter Notebook server.
+# Main usage
 
-### Additional Information
+My main usage of these images is to have a stable software environment that I can easily copy to a secure analysis server like COSMOS-SENS.
+
+In order to make this package usable on cosmos you need to create a module, but this would blow the scope for this here.
+
+# Additional Information
 
 - For more details on `changeo`, refer to its [documentation](https://github.com/changeo/changeo).
 - If you encounter issues or have questions, please open an issue on the GitHub repository.
