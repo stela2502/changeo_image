@@ -11,7 +11,8 @@ This repository provides a Singularity image that includes Jupyter Notebook and 
 
 ### Repository Structure
 
-- `changeo_image.sif` - The Singularity image file containing Jupyter Notebook and `changeo`.
+- 'changeo_1.0.txt' - The Singularity recipe file.
+- `changeo_<version>.sif` - The Singularity image file containing Jupyter Notebook and `changeo`.
 - `Makefile` - Automates image building, sandbox creation, and running.
 - `shell.sh` - Script used for modifying the sandbox environment.
 - `run.sh` - Script used to run the Singularity image.
@@ -80,3 +81,4 @@ In order to make this package usable on cosmos you need to create a module, but 
 - If you encounter issues or have questions, please open an issue on the GitHub repository.
 
 
+:
